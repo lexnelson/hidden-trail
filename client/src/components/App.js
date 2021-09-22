@@ -1,11 +1,14 @@
-import logo from '../logo.svg';
+
 import '../App.css';
-import { NavLink, Switch, Route, useHistory, Redirect } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Register from './Register'
 import Login from './Login'
 import Navbar from './Navbar'
-import Searchbar from './Searchbar'
+// import Searchbar from './Searchbar'
+import Home from './Home'
+import MyHikes from './MyHikes'
+import HikeList from './HikeList'
 import 'semantic-ui-css/semantic.min.css'
 
 
@@ -14,7 +17,7 @@ function App() {
   const [user, setUser] = useState()
   const [loggedIn, setLoggedIn] = useState(false)
  
-  let history = useHistory()
+ 
 
   useEffect(()=> {
     fetch('/me').then((r) => {
@@ -22,6 +25,7 @@ function App() {
         r.json().then((user)=> {
           setUser(user)
           setLoggedIn(true)
+          
         })
       }
     })
@@ -45,13 +49,19 @@ function App() {
       <Switch>
        
         <Route exact path = '/'>
-          { loggedIn? <Searchbar/> : <Redirect to='/login'/>}
+          { loggedIn? <Home user={user}/> : <Redirect to='/login'/>}
         </Route>
         <Route exact path = '/login'>
           <Login handleLogin={handleLogin}/>
         </Route>
         <Route exact path = '/register'>
           <Register handleLogin={handleLogin}/>
+        </Route>
+        <Route exact path ='/myhikes'>
+          <MyHikes user={user}/>
+        </Route>
+        <Route exact path ='/hikelist'>
+          <HikeList user={user}/>
         </Route>
       </Switch>
     </div>

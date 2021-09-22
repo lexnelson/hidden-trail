@@ -1,5 +1,5 @@
 class HikeListSerializer < ActiveModel::Serializer
-  attributes :id, :comment
-  has_one :user
-  has_one :hike
+  attributes :id, :completed, :hike_id
+  # has_one :user
+  # has_one :hike
 end

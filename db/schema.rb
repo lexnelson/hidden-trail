@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_22_175701) do
   create_table "hike_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "hike_id", null: false
-    t.string "comment"
+    t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hike_id"], name: "index_hike_lists_on_hike_id"

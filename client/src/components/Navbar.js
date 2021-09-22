@@ -22,7 +22,7 @@ function Navbar( {handleLogout } ) {
                 </Header>
             </Segment>
             <Menu pointing secondary>
-                <Menu.Item as={ NavLink } to='/hikes'>
+                <Menu.Item as={ NavLink } to='/myhikes'>
                     {/* <NavLink to='/hikes'>
                     My Hikes
                     </NavLink> */}

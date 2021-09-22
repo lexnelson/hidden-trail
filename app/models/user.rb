@@ -3,4 +3,5 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     has_many :hikes
     has_many :hike_photos, through: :hikes
+    has_many :hike_lists
 end

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useHistory} from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react'
 
 function Register({ handleLogin}){
     const [username, setUsername] = useState('')
