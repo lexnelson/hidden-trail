@@ -1,0 +1,2 @@
+class HikePhotosController < ApplicationController
+end
