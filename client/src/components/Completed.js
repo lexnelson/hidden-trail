@@ -1,13 +1,14 @@
-import { useEffect, useState} from 'react'
-import HikeListCard from './HikeListCard'
 import { Menu } from 'semantic-ui-react'
 import { NavLink, useHistory } from 'react-router-dom'
+import { useEffect, useState} from 'react'
+import CompletedCard from './CompletedCard'
 
-function HikeList({user}){
+function Completed({user}){
     const [hikeList, setHikeList]= useState([])
+    
 
     useEffect(()=> {
-        fetch(`/${user.id}/hike_lists/uncompleted`, { 
+        fetch(`/${user.id}/hike_lists/completed`, { 
         method: 'GET', 
         headers: {
             'Content-type': 'application/json'
@@ -28,45 +29,42 @@ function HikeList({user}){
         })
         
     }
-    
-    function itsCompleted(hl){
-        fetch(`/${user.username}/hike_lists/${hl.id}`, {
+
+    function uncompleted(hl){
+        fetch(`/${user.username}/hike_lists/${hl.id}/false`, {
             method: "PATCH", 
             headers: {
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                completed: true
+                completed: false
             }),
         })
         .then((r)=> r.json())
         .then(hl => setHikeList(hl))
     }
 
-  
-  
-
     function mapping(){
         if (hikeList.length > 0){
             return (hikeList.map(hl => {
-                return (<HikeListCard hl={hl} key={hl.id} user={user} itsCompleted={itsCompleted}
+                return (<CompletedCard hl={hl} key={hl.id} user={user} uncompleted={uncompleted}
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div>Hmmm...looks like you don't have any hikes to explore. Why don't you search for a new one?</div>)
+            return (<div> Sorry you have no Completed hikes</div>)
         }
     }
+
     return(
         <div>
-            <Menu secondary>
+             <Menu secondary>
                 <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to explore</Menu.Item>
                 <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've been on</Menu.Item>
                 <Menu.Item as={ NavLink } exact to='/myhikes/created'>Hikes I created</Menu.Item>
             </Menu>
-            <h1>Hello</h1>
             {mapping()}
         </div>
     )
 }
 
-export default HikeList
+export default Completed

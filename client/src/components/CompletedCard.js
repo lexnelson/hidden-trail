@@ -1,7 +1,7 @@
 import { Segment, Grid, Image, Button, Modal, Checkbox } from 'semantic-ui-react'
 import {useState} from 'react'
 
-function HikeListCard({hl, user, handleDelete, itsCompleted, uncompleted}) {
+function CompletedCard({hl, user, handleDelete, uncompleted}) {
     const [visible, setVisible]=useState(false)
     // const [isCompleted, setIsCompleted]=useState(false)
    
@@ -9,8 +9,6 @@ function HikeListCard({hl, user, handleDelete, itsCompleted, uncompleted}) {
         setVisible(!visible)
     }
 
-   
-   
 
     return (
         <div>
@@ -33,7 +31,7 @@ function HikeListCard({hl, user, handleDelete, itsCompleted, uncompleted}) {
                             <p>Done this hike before? Mark it as completed</p>
                             {/* <Checkbox toggle label='Completed' checked={isCompleted} onChange={handleToggle}/> */}
                             
-                            <Button onClick={()=>itsCompleted(hl)}>Mark as completed</Button>
+                            <Button onClick={()=>uncompleted(hl)}>Oops, I didn't complete this yet</Button>
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
                         <Button onClick={()=> handleDelete(hl)}>Remove from List</Button>
                     </Segment.Group>
@@ -43,4 +41,4 @@ function HikeListCard({hl, user, handleDelete, itsCompleted, uncompleted}) {
     )
 }
 
-export default HikeListCard
+export default CompletedCard

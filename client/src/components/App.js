@@ -10,6 +10,7 @@ import Home from './Home'
 import MyHikes from './MyHikes'
 import HikeList from './HikeList'
 import 'semantic-ui-css/semantic.min.css'
+import Completed from './Completed'
 
 
 
@@ -57,10 +58,13 @@ function App() {
         <Route exact path = '/register'>
           <Register handleLogin={handleLogin}/>
         </Route>
-        <Route exact path ='/myhikes'>
+        <Route exact path ='/myhikes/completed'>
+          <Completed user={user}/>
+        </Route>
+        <Route exact path ='/myhikes/created'>
           <MyHikes user={user}/>
         </Route>
-        <Route exact path ='/hikelist'>
+        <Route path ='/myhikes'>
           <HikeList user={user}/>
         </Route>
       </Switch>

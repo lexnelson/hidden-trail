@@ -22,17 +22,11 @@ function Navbar( {handleLogout } ) {
                 </Header>
             </Segment>
             <Menu pointing secondary>
-                <Menu.Item as={ NavLink } to='/myhikes'>
-                    {/* <NavLink to='/hikes'>
-                    My Hikes
-                    </NavLink> */}
-                    XXX
-                </Menu.Item>
                 <Menu.Item as={ NavLink } exact to='/'>
                     Search for a Hike
                 </Menu.Item>
-                <Menu.Item as={ NavLink } to='/hikelist'>
-                    Hike List /// My Hikes
+                <Menu.Item as={ NavLink } to='/myhikes'>
+                    My Hikes
                 </Menu.Item>
                 
                 <Menu.Item position='right' as={ Button } onClick={handleClick}>

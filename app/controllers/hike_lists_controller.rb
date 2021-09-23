@@ -11,7 +11,14 @@ class HikeListsController < ApplicationController
     def update_completed
         hl = HikeList.find(params[:id])
         hl.update(hl_params)
-        hls = HikeList.where(username: params[:username])
+        hls = HikeList.where(username: params[:username]).where(completed: false)
+        render json: hls
+    end
+
+    def set_false
+        hl = HikeList.find(params[:id])
+        hl.update(hl_params)
+        hls = HikeList.where(username: params[:username]).where(completed: true)
         render json: hls
     end
 
@@ -21,11 +28,15 @@ class HikeListsController < ApplicationController
         head :no_content
     end
 
-    def user_list
+    def user_list_uncompleted
         user = User.find(params[:id])
-        hls = HikeList.where(user_id: user.id)
-        # hikes = {}
-        # hls.each {|hl| hikes << hl.hike }
+        hls = HikeList.where(user_id: user.id).where(completed: false)
+        render json: hls
+    end
+
+    def user_list_completed
+        user = User.find(params[:id])
+        hls = HikeList.where(user_id: user.id).where(completed: true)
         render json: hls
     end
 

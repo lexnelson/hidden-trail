@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   # resources :hike_photos, only: [:index, :show, :create]
   resources :hike_lists, only: [:create, :destroy]
-  get '/:id/hike_lists', to: 'hike_lists#user_list'
+  get '/:id/hike_lists/uncompleted', to: 'hike_lists#user_list_uncompleted'
+  get '/:id/hike_lists/completed', to: 'hike_lists#user_list_completed'
   patch '/:username/hike_lists/:id', to: 'hike_lists#update_completed'
+  patch '/:username/hike_lists/:id/false', to: 'hike_lists#set_false'
 
   resources :hikes
   # resources :users
