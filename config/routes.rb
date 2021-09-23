@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # resources :hike_photos, only: [:index, :show, :create]
   resources :hike_lists, only: [:create, :destroy]
   get '/:id/hike_lists', to: 'hike_lists#user_list'
+  patch '/:username/hike_lists/:id', to: 'hike_lists#update_completed'
 
   resources :hikes
   # resources :users

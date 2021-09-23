@@ -21,7 +21,8 @@ function HikeCard({ hike, user }) {
             body: JSON.stringify({
                 user_id: user.id,
                 hike_id: hike.id, 
-                completed: false
+                completed: false, 
+                username: user.username
             }),
         })
         .then((r)=> r.json())
@@ -47,7 +48,7 @@ function HikeCard({ hike, user }) {
                         </div>
                         : <> </>}
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
-                        <Button onClick={handleAddToList}>{added? 'Added ':'Add to List'}</Button>
+                        <Button onClick={handleAddToList}>{added? 'Added ✅':'Add to List'}</Button>
                     </Segment.Group>
                 </Grid.Column>
             </Grid>

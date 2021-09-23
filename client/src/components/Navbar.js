@@ -26,13 +26,13 @@ function Navbar( {handleLogout } ) {
                     {/* <NavLink to='/hikes'>
                     My Hikes
                     </NavLink> */}
-                    My Hikes
+                    XXX
                 </Menu.Item>
                 <Menu.Item as={ NavLink } exact to='/'>
-                    Home
+                    Search for a Hike
                 </Menu.Item>
                 <Menu.Item as={ NavLink } to='/hikelist'>
-                    Hike List
+                    Hike List /// My Hikes
                 </Menu.Item>
                 
                 <Menu.Item position='right' as={ Button } onClick={handleClick}>

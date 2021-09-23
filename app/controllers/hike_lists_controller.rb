@@ -2,18 +2,17 @@ class HikeListsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :not_valid
 
-    # def index
-    #     hls = HikeList.all
-    #     render json: hls
-    # end
-
     def create 
         hl = HikeList.create!(hl_params)
         render json: hl, status: :created
     end
 
 
-    def update
+    def update_completed
+        hl = HikeList.find(params[:id])
+        hl.update(hl_params)
+        hls = HikeList.where(username: params[:username])
+        render json: hls
     end
 
     def destroy
@@ -33,7 +32,7 @@ class HikeListsController < ApplicationController
     private 
 
     def hl_params
-        params.permit(:hike_id, :user_id, :completed)
+        params.permit(:hike_id, :user_id, :completed, :username)
     end
 
     def not_valid(invalid)

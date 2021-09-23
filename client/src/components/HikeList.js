@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react'
+import HikeListCard from './HikeListCard'
 
 function HikeList({user}){
     const [hikeList, setHikeList]= useState([])
@@ -10,25 +11,84 @@ function HikeList({user}){
             'Content-type': 'application/json'
         }})
         .then(r => r.json())
-        .then(hikes => getHikes(hikes))
+        .then(hl => setHikeList(hl))
     },[])
-
-    function getHikes(hikes){
-        hikes.forEach(hike => {
-            return fetch(`/hikes/${hike.hike_id}`, {
-                method: "GET", 
-                headers: {
-                    "Content-type": "application/json"
-                }
+//HikeList state to go in dependency arrray !!!
+    // function getHikes(hikes){
+    //     hikes.forEach(hike => {
+    //         return fetch(`/hikes/${hike.hike_id}`, {
+    //             method: "GET", 
+    //             headers: {
+    //                 "Content-type": "application/json"
+    //             }
+    //         })
+    //         .then(r=> r.json())
+    //         .then(hike => {
+    //             // hikeList.push(hike)
+    //             let arr = []
+    //             arr.push(hike)
+    //             setHikeList(arr)
+    //         })
+    //     })
+    // }
+    function handleDelete(hl){
+        console.log(hl.id)
+        fetch(`/hike_lists/${hl.id}`, {
+            method: "DELETE"
+        }).then(()=>{
+            const filter = hikeList.filter((hlist)=> {
+                return hlist.id !== hl.id
             })
-            .then(r=> r.json())
-            .then(hike => console.log(hike))
+            setHikeList(filter)
         })
+        
+    }
+    
+    function itsCompleted(hl){
+        fetch(`/${user.username}/hike_lists/${hl.id}`, {
+            method: "PATCH", 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                completed: true
+            }),
+        })
+        .then((r)=> r.json())
+        .then(hl => setHikeList(hl))
     }
 
-//add an each do loop for the hike list by changing console.log to a new function that will take in the array and dp a loop of get requests
+    function uncompleted(hl){
+        fetch(`/${user.username}/hike_lists/${hl.id}`, {
+            method: "PATCH", 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                completed: false
+            }),
+        })
+        .then((r)=> r.json())
+        .then(hl => setHikeList(hl))
+    }
+    console.log(hikeList)
+
+    function mapping(){
+        if (hikeList.length > 0){
+            return (hikeList.map(hl => {
+                return (<HikeListCard hl={hl} key={hl.id} user={user} itsCompleted={itsCompleted}
+                     uncompleted={uncompleted} handleDelete={handleDelete}/>)
+        }))} else {
+            return (<> </>)
+        }
+    }
     return(
-        <div>Hello from Hike List</div>
+        <div>
+            <h1>Hello</h1>
+            {mapping()}
+        </div>
     )
 }
 
