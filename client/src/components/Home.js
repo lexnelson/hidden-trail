@@ -23,18 +23,12 @@ function Home({ user }){
         }))} else {
             return (<> </>)
         }
-        // allHikes.map(hike => {
-        //     return (<HikeCard hike={hike} key={hike.id} />)
-        // })
     }
     console.log(allHikes)
     return(
         <div>
             <Searchbar/>
             <h1>Hello from Home </h1>
-            {/* {allHikes.map(hike => {
-                return (<HikeCard hike={hike} key={hike.id} />)
-            })} */}
             {mapping()}
         </div>
     )

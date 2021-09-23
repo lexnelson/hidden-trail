@@ -11,6 +11,7 @@ import MyHikes from './MyHikes'
 import HikeList from './HikeList'
 import 'semantic-ui-css/semantic.min.css'
 import Completed from './Completed'
+import CreateHike from './CreateHike'
 
 
 
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route exact path = '/login'>
           <Login handleLogin={handleLogin}/>
+        </Route>
+        <Route exact path ='/create-a-hike'>
+          <CreateHike user={user}/>
         </Route>
         <Route exact path = '/register'>
           <Register handleLogin={handleLogin}/>

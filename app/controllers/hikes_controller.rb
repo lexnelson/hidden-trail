@@ -11,6 +11,7 @@ class HikesController < ApplicationController
 
     def create
         hike = Hike.create!(hike_params)
+        hikes = Hike.all
         render json: hike, status: :created
     end
 
@@ -40,7 +41,7 @@ class HikesController < ApplicationController
     private
 
     def hike_params
-        params.permit(:user_id, :title, :city, :state, :elevation, :length, :difficulty)
+        params.permit(:user_id, :title, :city, :state, :pet_friendly, :length, :difficulty, :directions, :extra_info)
     end
 
     def render_not_found

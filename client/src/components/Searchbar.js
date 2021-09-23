@@ -1,11 +1,35 @@
 import {useState} from 'react'
-import { Search, Grid, Header, Segment } from 'semantic-ui-react'
+import { Divider, Input, Segment, Button } from 'semantic-ui-react'
+import {useHistory} from 'react-router-dom'
 
 function Searchbar(){
+    let history=useHistory()
+
+    function handleClick(){
+        history.push('/create-a-hike')
+    }
+
     return(
         <div>
-            <Search 
-            placeholder='search by location...'></Search>
+            <Segment textAlign='center'>
+                <Input icon='search'
+                iconPosition='left'
+                placeholder='Search by location...'
+                />
+                <Divider  horizontal >Or </Divider>
+                
+                    <Button
+                    color='olive'
+                    icon='add'
+                    //  labelPosition='left'
+                    onClick={handleClick}
+                    >Add a New Hike</Button>
+                   
+           
+                  
+            </Segment>
+            
+           
         </div>
     )
 }
