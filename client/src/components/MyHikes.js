@@ -1,6 +1,7 @@
 import { useEffect, useState} from 'react'
 import { Menu } from 'semantic-ui-react'
 import { NavLink, useHistory } from 'react-router-dom'
+import MyHikeCard from './MyHikeCard'
 function MyHikes({ user }){
     const [myHikes, setMyHikes]=useState([])
 
@@ -11,9 +12,29 @@ function MyHikes({ user }){
             'Content-type': 'application/json'
         }})
         .then(r => r.json())
-        .then(hikes => console.log(hikes))
-    },[myHikes])
+        .then(hikes => setMyHikes(hikes))
+    },[])
 
+    function handleDelete(id){
+        fetch(`/hikes/${id}`, {
+            method: "DELETE"
+        }).then(()=>{
+            const filter = myHikes.filter((hike)=> {
+                return hike.id !== id
+            })
+            setMyHikes(filter)
+        })
+    }
+
+    function mapping(){
+        if (myHikes.length > 0){
+            return (myHikes.map(hike => {
+                return (<MyHikeCard hike={hike} key={hike.id} user={user} 
+                      handleDelete={handleDelete}/>)
+        }))} else {
+            return (<div>It looks like you haven't created any hikes yet. </div>)
+        }
+    }
 
     return(
         <div>
@@ -22,6 +43,7 @@ function MyHikes({ user }){
                 <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've been on</Menu.Item>
                 <Menu.Item as={ NavLink } exact to='/myhikes/created'>Hikes I created</Menu.Item>
             </Menu>
+            {mapping()}
         </div>
     )
 }

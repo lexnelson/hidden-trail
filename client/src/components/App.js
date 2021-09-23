@@ -1,6 +1,6 @@
 
 import '../App.css';
-import { Switch, Route, Redirect } from "react-router-dom"
+import { Switch, Route, Redirect, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Register from './Register'
 import Login from './Login'
@@ -12,6 +12,7 @@ import HikeList from './HikeList'
 import 'semantic-ui-css/semantic.min.css'
 import Completed from './Completed'
 import CreateHike from './CreateHike'
+import EditHike from './EditHike'
 
 
 
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route exact path ='/create-a-hike'>
           <CreateHike user={user}/>
+        </Route>
+        <Route exact path='/myhikes/hike/:id'>
+          <EditHike />
         </Route>
         <Route exact path = '/register'>
           <Register handleLogin={handleLogin}/>

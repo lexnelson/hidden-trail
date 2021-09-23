@@ -1,35 +1,21 @@
 import { Segment, Grid, Image, Button, Modal } from 'semantic-ui-react'
 import {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
-function HikeCard({ hike, user }) {
-    // console.log(hike)
-    console.log(user)
+
+function MyHikeCard({user, handleDelete, hike}){
     const [visible, setVisible]=useState(false)
-    const [added, setAdded]= useState(false)
+    let history = useHistory()
 
     function handleSeeMore(){
         setVisible(!visible)
     }
-
-    function handleAddToList(){
-        setAdded(!added)
-        fetch('/hike_lists', {
-            method: "POST", 
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                user_id: user.id,
-                hike_id: hike.id, 
-                completed: false, 
-                username: user.username
-            }),
-        })
-        .then((r)=> r.json())
-        .then(hl=> console.log(hl))
+    function goToHike(){
+        history.push(`/myhikes/hike/${hike.id}`)
     }
 
-    return (
+
+    return(
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
                 <Grid.Column width={12}>
@@ -48,7 +34,8 @@ function HikeCard({ hike, user }) {
                         </div>
                         : <> </>}
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
-                        <Button onClick={handleAddToList}>{added? 'Added ✅':'Add to My Hikes'}</Button>
+                        <Button onClick={()=>handleDelete(hike.id)}>Delete X</Button>
+                        <Button onClick={goToHike}>Edit this hike</Button>
                     </Segment.Group>
                 </Grid.Column>
             </Grid>
@@ -56,4 +43,4 @@ function HikeCard({ hike, user }) {
     )
 }
 
-export default HikeCard
+export default MyHikeCard
