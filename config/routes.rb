@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :hike_photos, only: [:index, :show, :create]
+  resources :hike_photos, only: [:index, :show, :destroy, :create]
   post '/add_photos', to: 'hike_photos#add_more_photos'
 
   resources :hike_lists, only: [:create, :destroy]

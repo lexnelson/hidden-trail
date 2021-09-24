@@ -16,8 +16,16 @@ class HikePhotosController < ApplicationController
         render json: hike
     end
 
+    def destroy
+        photo=HikePhoto.find(params[:id])
+        hike = hike = Hike.find_by(id: photo.hike_id)
+        photo.destroy
+        render json: hike
+    end
 
     def show
+        photo=HikePhoto.find(params[:id])
+        render json: photo
     end
 
     private

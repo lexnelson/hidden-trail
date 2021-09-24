@@ -100,7 +100,7 @@ function EditHike({ }) {
     }
 
     function phototCard() {
-        console.log(photos.length, 'photos')
+        
         if (photos.length > 0) {
             return (
                 <div className='nestedEditPicsContainer'>
@@ -108,11 +108,12 @@ function EditHike({ }) {
                 {photos.map((photo) => {
                 return (
                     <div className='editPics'>
-                        <Card >
+                        <Card key={photo.id}>
                             <Image src={photo.img_url} size='medium' />
                             <Card.Content>
                                 <Card.Meta>{`Caption: ${photo.caption}`}</Card.Meta>
                             </Card.Content>
+                            <Button type='button' onClick={()=> deleteButton(photo.id)}>Delete photo</Button>
                         </Card>
                     </div>
                 )
@@ -125,6 +126,15 @@ function EditHike({ }) {
         }
     }
 
+
+    function deleteButton(id){
+        fetch(`/hike_photos/${id}`, {
+            method: "DELETE"
+        }).then(res=> res.json())
+        .then(hike => setStates(hike))
+    }
+    
+    
     function handleChange(e) {
         if (e.target.files && e.target.files[0]) {
             let img = e.target.files[0]
@@ -223,7 +233,7 @@ function EditHike({ }) {
                                     <Form.Field>
                                         <label>Upload a file</label>
                                         <input type='file'
-                                            value={imgSrc}
+                                            // value={imgSrc}
                                             placeholder='upload an image'
                                             onChange={handleChange} />
                                     </Form.Field>
@@ -236,7 +246,7 @@ function EditHike({ }) {
 
                                 </Form.Group>
                                 <Form.Group>
-                                    <Button floated='left'>Submit</Button>
+                                    <Button type ='submit'floated='left'>Submit</Button>
                                 </Form.Group>
                             </Segment>
                         </Form>

@@ -6,6 +6,8 @@ function HikeCard({ hike, user }) {
     const [visible, setVisible]=useState(false)
     const [added, setAdded]= useState(false)
 
+    // console.log(hike)
+
     function handleSeeMore(){
         setVisible(!visible)
     }
@@ -27,6 +29,26 @@ function HikeCard({ hike, user }) {
         .then((r)=> r.json())
         .then(hl=> console.log(hl))
     }
+        function renderImages(){
+            if (hike.hike_photos.length > 0){
+                return(
+                    hike.hike_photos.map((photo)=>{
+                        return(
+                            <div key={photo.id}>
+                                <Image size='small' src={photo.img_url} />
+                            </div>
+                        )
+                    })
+                )
+            }
+            else {
+                return(
+                    <div>
+                        <Image size ='small' src='https://www.shihoriobata.com/wp-content/uploads/2020/08/how-to-draw-mountains-thumbnail.jpg'/> 
+                    </div>
+                )
+            }
+        }
 
     return (
         <div>
@@ -37,8 +59,15 @@ function HikeCard({ hike, user }) {
                             <h1>{hike.title}</h1>
                         </Segment>
                         {/* <Image src={`${hike.hike_photos[0]}`} size='small'/> */}
-                        <Segment.Group>
-                            <Segment>{`${hike.city}, ${hike.state}`}</Segment>
+                        <Segment.Group widths='equal'>
+                            {renderImages()}
+                            <Segment>
+                                <h3>{`${hike.city}, ${hike.state}`}</h3>
+                                <h2>Difficulty</h2>
+                                </Segment>
+                                <Segment>
+                                    
+                                </Segment>
                         </Segment.Group>
                         {visible ? 
                         <div>

@@ -60,6 +60,7 @@ function CreateHike({ user }) {
     }
    
     function createImage(id){
+        if (imgSrc ){
         fetch("/hike_photos", {
             method: "POST",
             headers: {
@@ -73,6 +74,9 @@ function CreateHike({ user }) {
         })
         .then(res=> res.json())
         .then(photo => console.log(photo))
+    } else {
+        console.log('hi')
+    }
     }
 
 
