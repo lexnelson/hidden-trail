@@ -19,9 +19,7 @@ function EditHike({ }) {
     const [imgSrc, setImgSrc] = useState()
 
     let history = useHistory()
-
-    console.log(hike)
-    console.log(photos)
+    
 
     const options = [
         { key: 'y', text: 'Yes', value: true },
@@ -102,6 +100,7 @@ function EditHike({ }) {
     }
 
     function phototCard() {
+        console.log(photos.length, 'photos')
         if (photos.length > 0) {
             return (
                 <div className='nestedEditPicsContainer'>
@@ -121,7 +120,8 @@ function EditHike({ }) {
            </div> )
         }
         else {
-            <p>Looks like your hike doesn't have any photos yet, upload a new one below!</p>
+            return(
+            <Header>Looks like your hike doesn't have any photos yet, upload a new one below!</Header>)
         }
     }
 
@@ -136,7 +136,7 @@ function EditHike({ }) {
         <div>
 
             {hike ?
-                <Grid textAlign='center' verticalAlign='middle' style={{ height: '210vh' }}>
+                <Grid textAlign='center' verticalAlign='middle' style={{ height: '140vh' }}>
                     <Grid.Column style={{ maxWidth: '800px' }}>
                         <Form onSubmit={handleSubmit}>
                             <Segment>
