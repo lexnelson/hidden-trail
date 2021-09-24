@@ -13,6 +13,7 @@ import 'semantic-ui-css/semantic.min.css'
 import Completed from './Completed'
 import CreateHike from './CreateHike'
 import EditHike from './EditHike'
+import Images from './Images'
 
 
 
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route exact path ='/create-a-hike'>
           <CreateHike user={user}/>
+        </Route>
+        <Route exact path='/images'>
+          <Images user={user}/>
         </Route>
         <Route exact path='/myhikes/hike/:id'>
           <EditHike />

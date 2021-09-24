@@ -24,7 +24,7 @@ function Home({ user }){
             return (<> </>)
         }
     }
-    console.log(allHikes)
+    
     return(
         <div>
             <Searchbar/>

@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.editPics{
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  
+}
+
+.ui.segment.editPicsContainer{
+  /* margin-top: 30px; */
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 10px;
+  width: 750px;
+}
+.nestedEditPicsContainer{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

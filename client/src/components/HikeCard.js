@@ -2,8 +2,7 @@ import { Segment, Grid, Image, Button, Modal } from 'semantic-ui-react'
 import {useState} from 'react'
 
 function HikeCard({ hike, user }) {
-    // console.log(hike)
-    console.log(user)
+   
     const [visible, setVisible]=useState(false)
     const [added, setAdded]= useState(false)
 
