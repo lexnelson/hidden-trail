@@ -35,7 +35,7 @@ function HikeCard({ hike, user }) {
                     hike.hike_photos.map((photo)=>{
                         return(
                             <div key={photo.id}>
-                                <Image size='small' src={photo.img_url} />
+                                <Image size='medium' src={photo.img_url} />
                             </div>
                         )
                     })
@@ -44,7 +44,7 @@ function HikeCard({ hike, user }) {
             else {
                 return(
                     <div>
-                        <Image size ='small' src='https://www.shihoriobata.com/wp-content/uploads/2020/08/how-to-draw-mountains-thumbnail.jpg'/> 
+                        <Image size ='medium' src='https://www.shihoriobata.com/wp-content/uploads/2020/08/how-to-draw-mountains-thumbnail.jpg'/> 
                     </div>
                 )
             }
