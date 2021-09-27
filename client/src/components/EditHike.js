@@ -135,12 +135,12 @@ function EditHike({ }) {
     }
     
     
-    function handleChange(e) {
-        if (e.target.files && e.target.files[0]) {
-            let img = e.target.files[0]
-            setImgSrc(URL.createObjectURL(img))
-        }
-    }
+    // function handleChange(e) {
+    //     if (e.target.files && e.target.files[0]) {
+    //         let img = e.target.files[0]
+    //         setImgSrc(URL.createObjectURL(img))
+    //     }
+    // }
 
     return (
         <div>
@@ -232,10 +232,10 @@ function EditHike({ }) {
                                 <Form.Group widths='equal'>
                                     <Form.Field>
                                         <label>Upload a file</label>
-                                        <input type='file'
-                                            // value={imgSrc}
-                                            placeholder='upload an image'
-                                            onChange={handleChange} />
+                                        <input type='text'
+                                             value={imgSrc}
+                                            placeholder='Image URL'
+                                            onChange={(e)=> setImgSrc(e.target.value)} />
                                     </Form.Field>
                                     <Form.Input
                                         type='text'

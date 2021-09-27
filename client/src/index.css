@@ -41,3 +41,47 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.ui.segment.nestedHikeCard{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hikeCardSinglePhoto{
+  height: auto;
+}
+
+.imgCard{
+  max-width: 50%;
+  height:auto;
+}
+
+.photoMap{
+  max-width: 30%;
+  height: auto;
+}
+
+.photoMapContainer{
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ui.segment.picsSegment{
+  display: flex;
+  flex-direction: column;
+ 
+}
+.nestedPhotosMap{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

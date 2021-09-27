@@ -23,6 +23,11 @@ class HikePhotosController < ApplicationController
         render json: hike
     end
 
+    def get_photos
+        photos = HikePhoto.where(hike_id: params[:id])
+        render json: photos
+    end
+
     def show
         photo=HikePhoto.find(params[:id])
         render json: photo

@@ -1,6 +1,6 @@
 class Hike < ApplicationRecord
   belongs_to :user
-  has_many :hike_photos
+  has_many :hike_photos, dependent: :destroy
   has_many :hike_lists
 
   validates :user_id, presence: true

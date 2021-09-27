@@ -80,12 +80,12 @@ function CreateHike({ user }) {
     }
 
 
-    function handleChange(e) {
-        if (e.target.files && e.target.files[0]) {
-            let img = e.target.files[0]
-            setImgSrc(URL.createObjectURL(img))
-        }
-    }
+    // function handleChange(e) {
+    //     if (e.target.files && e.target.files[0]) {
+    //         let img = e.target.files[0]
+    //         setImgSrc(URL.createObjectURL(img))
+    //     }
+    // }
 
 
     return (
@@ -151,9 +151,9 @@ function CreateHike({ user }) {
                             <Form.Group widths='equal'>
                                 <Form.Field>
                                     <label>Upload a picture for this Hike!</label>
-                                    <input type='file'
-                                        placeholder='upload an image'
-                                        onChange={handleChange} />
+                                    <input type='text'
+                                        placeholder='Image URL'
+                                        onChange={(e)=> setImgSrc(e.target.value)} />
                                 </Form.Field>
                                 <Form.Input
                                     type='text'

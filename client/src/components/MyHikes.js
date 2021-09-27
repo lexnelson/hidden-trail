@@ -32,7 +32,10 @@ function MyHikes({ user }){
                 return (<MyHikeCard hike={hike} key={hike.id} user={user} 
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div>It looks like you haven't created any hikes yet. </div>)
+            return (<div>
+                <h3>It looks like you haven't created any hikes yet...</h3>
+                <h4>Add a new one <a href='/create-a-hike'>here</a></h4>
+                 </div>)
         }
     }
 
