@@ -115,7 +115,6 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
                         <p>Done this hike before? Mark it as completed</p>
                         <Button onClick={() => itsCompleted(hl)}>Mark as completed</Button>
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
-                        {/* <Button onClick={() => handleDelete(hl)}>Remove from List</Button> */}
                     </Segment.Group>
                 </Grid.Column>
             </Grid>

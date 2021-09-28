@@ -78,7 +78,7 @@ function CompletedCard({hl, user, handleDelete, uncompleted}) {
     return (
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
-                <Grid.Column width={12}>
+                <Grid.Column width={9}>
                     <Segment.Group>
                     <Segment textAlign='left'>
                     <Popup content='remove from list' trigger={
@@ -111,10 +111,10 @@ function CompletedCard({hl, user, handleDelete, uncompleted}) {
                             </Segment.Group>
                             : <> </>}
 
-                            <p>Haven't done this hike before? Mark it as not done</p>
+                            <p>Haven't hiked this trail before? Mark it as not hiked yet. </p>
                             {/* <Checkbox toggle label='Completed' checked={isCompleted} onChange={handleToggle}/> */}
                             
-                            <Button onClick={()=>uncompleted(hl)}>Not Done</Button>
+                            <Button onClick={()=>uncompleted(hl)}>Not hiked yet</Button>
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
                         
                     </Segment.Group>

@@ -59,11 +59,11 @@ function HikeList({user}){
     return(
         <div>
             <Menu secondary>
-                <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to explore</Menu.Item>
-                <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've been on</Menu.Item>
+                <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
+                <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>
                 <Menu.Item as={ NavLink } exact to='/myhikes/created'>Hikes I created</Menu.Item>
             </Menu>
-            <h1>Hello</h1>
+            
             {mapping()}
         </div>
     )

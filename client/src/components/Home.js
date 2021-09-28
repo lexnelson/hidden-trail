@@ -43,7 +43,7 @@ function Home({ user }){
     return(
         <div>
             <Searchbar onSearch={onSearch}/>
-            <h1>Hello from Home </h1>
+            <h1>Find your next happy place... </h1>
             {mapping()}
         </div>
     )

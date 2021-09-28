@@ -17,7 +17,7 @@ function Navbar( {handleLogout } ) {
     return (
         <div>
             <Segment>
-                <Header>
+                <Header as='h1'>
                     Hidden Trails
                 </Header>
             </Segment>
