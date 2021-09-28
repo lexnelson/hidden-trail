@@ -81,6 +81,7 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
                 <Grid.Column width={9}>
+                <div style={{paddingBottom: '40px'}}>
                     <Segment.Group>
                         <Segment textAlign='left'>
                             <Popup content='remove from list' trigger={
@@ -116,6 +117,7 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
                         <Button onClick={() => itsCompleted(hl)}>Mark as completed</Button>
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
                     </Segment.Group>
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>

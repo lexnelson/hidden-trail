@@ -1,4 +1,4 @@
-import { Segment, Grid, Image, Button, Modal, Popup, Card, Header } from 'semantic-ui-react'
+import { Segment, Grid, Button, Popup, Header } from 'semantic-ui-react'
 import { useState } from 'react'
 import TestModal from './TestModal'
 
@@ -6,6 +6,7 @@ function HikeCard({ hike, user }) {
 
     const [visible, setVisible] = useState(false)
     const [added, setAdded] = useState(false)
+   
 
 
 
@@ -38,7 +39,8 @@ function HikeCard({ hike, user }) {
 
                         <img className='imgCard' src={hike.hike_photos[0].img_url} floated='left' />
                         <ul>
-                            <h4>{`Difficulty: ${hike.difficulty}`}</h4>
+                            {setDifficulty()}
+                            {/* <h4>{`Difficulty: ${hike.difficulty}`}</h4> */}
                             <h4>{`Length: ${hike.length} miles`}</h4>
                             <h4>{hike.pet_friendly ? 'Pet friendly: yes' : 'Pet friendly: no'}</h4>
                         </ul>
@@ -82,10 +84,22 @@ function HikeCard({ hike, user }) {
         }
     }
 
+    function setDifficulty(){
+        if (hike.difficulty <= 2){
+            return(<h4>{`Difficulty: Easy`}</h4> )
+        } else if (hike.difficulty === 3){
+            return(<h4>{`Difficulty: Moderate`}</h4>)
+        }else {
+            return (<h4>{`Difficulty: Hard`}</h4>)
+        }
+    }
+  
+
     return (
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
                 <Grid.Column width={9}>
+                <div style={{paddingBottom: '40px'}}>
                     <Segment.Group>
                         <Segment textAlign='left'>
                             <Popup content='add to your list!' trigger={
@@ -123,6 +137,7 @@ function HikeCard({ hike, user }) {
                         <Button onClick={handleSeeMore} > {visible ? 'See Less' : 'See More'}</Button>
 
                     </Segment.Group>
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>

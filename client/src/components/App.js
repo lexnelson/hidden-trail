@@ -61,7 +61,7 @@ function App() {
         <Route exact path ='/create-a-hike'>
           <CreateHike user={user}/>
         </Route>
-        <Route exact path='/myhikes/hike/:id'>
+        <Route exact path='/hike/:id'>
           <EditHike />
         </Route>
         <Route exact path = '/register'>

@@ -79,6 +79,7 @@ function CompletedCard({hl, user, handleDelete, uncompleted}) {
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
                 <Grid.Column width={9}>
+                <div style={{paddingBottom: '40px'}}>
                     <Segment.Group>
                     <Segment textAlign='left'>
                     <Popup content='remove from list' trigger={
@@ -118,6 +119,7 @@ function CompletedCard({hl, user, handleDelete, uncompleted}) {
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
                         
                     </Segment.Group>
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>

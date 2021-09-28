@@ -12,7 +12,7 @@ function MyHikeCard({user, handleDelete, hike}){
         setVisible(!visible)
     }
     function goToHike(){
-        history.push(`/myhikes/hike/${hike.id}`)
+        history.push(`/hike/${hike.id}`)
     }
 
     function renderImage() {
@@ -63,7 +63,7 @@ function MyHikeCard({user, handleDelete, hike}){
             )
         }
         else {
-            return (<> </>)
+            return (<p> Looks like this hike doesn't have any photos</p>)
         }
     }
 
@@ -72,9 +72,12 @@ function MyHikeCard({user, handleDelete, hike}){
     return(
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
-                <Grid.Column width={12}>
+                <Grid.Column width={9}>
+                    <div style={{paddingBottom: '100px'}}>
                     <Segment.Group>
                         <Segment textAlign='left'>
+                        <Popup content='delete this hike' trigger={
+                                <Button color='olive'onClick={()=>handleDelete(hike.id)} floated='right'> X</Button>} />
                         <h1>{hike.title}</h1>
                             <h3>{`${hike.city}, ${hike.state}`}</h3>
                         </Segment>
@@ -95,7 +98,7 @@ function MyHikeCard({user, handleDelete, hike}){
                                         <h4>Directions:</h4>
                                         <p>{` ${hike.directions}`}</p>
                                         <h4>Extra Information: </h4>
-                                        {hike.extra_info ? <p>{` ${hike.extra_info}`}</p> : <> </>}
+                                        {hike.extra_info ? <p>{` ${hike.extra_info}`}</p> : <p>Looks like this hike doesn't have any extra information </p>}
                                     </Segment>
                                     <Segment className='picsSegment'>
                                         {imageMapping()}
@@ -105,9 +108,10 @@ function MyHikeCard({user, handleDelete, hike}){
                             : <> </>}
                         
                         <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
-                        <Button onClick={()=>handleDelete(hike.id)}>Delete X</Button>
+                        
                         <Button onClick={goToHike}>Edit this hike</Button>
                     </Segment.Group>
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>
