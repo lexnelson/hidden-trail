@@ -1,6 +1,7 @@
-import { Segment, Grid, Button, Popup, Header } from 'semantic-ui-react'
+import { Segment, Grid, Button, Popup, Header, Comment, Form } from 'semantic-ui-react'
 import { useState } from 'react'
 import TestModal from './TestModal'
+import Comments from './Comments'
 
 function HikeCard({ hike, user }) {
 
@@ -93,6 +94,11 @@ function HikeCard({ hike, user }) {
             return (<h4>{`Difficulty: Hard`}</h4>)
         }
     }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log('hi')
+    }
   
 
     return (
@@ -130,10 +136,13 @@ function HikeCard({ hike, user }) {
                                     <Segment className='picsSegment'>
                                         {imageMapping()}
                                     </Segment>
+                                    <Segment textAlign ='left'>
+                                        <Comments hike={hike} user={user}/>
+                                    </Segment>
                                 </div>
                             </Segment.Group>
                             : <> </>}
-
+                            
                         <Button onClick={handleSeeMore} > {visible ? 'See Less' : 'See More'}</Button>
 
                     </Segment.Group>

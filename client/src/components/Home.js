@@ -8,9 +8,6 @@ function Home({ user }) {
     const [difficulty, setDifficulty] = useState('')
     const [length, setLength] = useState('')
 
-    // console.log(search)
-    console.log(length)
-
     useEffect(() => {
         fetch('/hikes', {
             method: 'GET',
@@ -40,7 +37,7 @@ function Home({ user }) {
                 return (<HikeCard hike={hike} key={hike.id} user={user} />)
             }))
         } else {
-            return (<> </>)
+            return (<h4>It doesn't look like any hikes match your search</h4>)
         }
     }
 
@@ -99,7 +96,7 @@ function Home({ user }) {
     return (
         <div>
             <Searchbar onSearch={onSearch} onDropdown={onDropdown} onLength={onLength} />
-            <h1>Find your next happy place... </h1>
+            <h2>Find your next happy place... </h2>
             {mapping()}
         </div>
     )

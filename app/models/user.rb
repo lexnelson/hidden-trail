@@ -4,4 +4,5 @@ class User < ApplicationRecord
     has_many :hikes
     has_many :hike_photos, through: :hikes
     has_many :hike_lists
+    has_many :comments
 end

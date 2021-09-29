@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_135503) do
+ActiveRecord::Schema.define(version: 2021_09_29_135425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "hike_id", null: false
+    t.bigint "user_id", null: false
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hike_id"], name: "index_comments_on_hike_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "hike_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -59,6 +69,8 @@ ActiveRecord::Schema.define(version: 2021_09_23_135503) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "hikes"
+  add_foreign_key "comments", "users"
   add_foreign_key "hike_lists", "hikes"
   add_foreign_key "hike_lists", "users"
   add_foreign_key "hike_photos", "hikes"

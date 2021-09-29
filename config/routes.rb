@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:destroy]
+  get '/:id/comments', to: 'comments#hike_comments'
+  post '/add_a_comment', to: 'comments#create_comment_for_hike'
+
   resources :hike_photos, only: [:index, :show, :destroy, :create]
   post '/add_photos', to: 'hike_photos#add_more_photos'
   get '/:id/photos', to: 'hike_photos#get_photos'
