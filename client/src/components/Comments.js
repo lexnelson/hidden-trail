@@ -88,7 +88,7 @@ function Comments({hike, user}) {
                 {mapComments()}
                 <Form onSubmit={handleSubmit}>
                     <Form.TextArea value={newComment} onChange={(e) => setNewComment(e.target.value)} />
-                    <Button>Add comment</Button>
+                    <Button >Add comment</Button>
                 </Form>
             </Comment.Group>
         </div>

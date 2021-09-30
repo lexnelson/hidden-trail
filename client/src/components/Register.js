@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useHistory} from 'react-router-dom'
-import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Message, Segment, Header } from 'semantic-ui-react'
 
 function Register({ handleLogin}){
     const [username, setUsername] = useState('')
@@ -41,12 +41,15 @@ function Register({ handleLogin}){
     }
 
     return (
-        <div>
+        <div style={{height:'1000px'}}>
            <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
+                <Segment className='mainCard'>
+                        <Header  as='h1'>Hidden Trails Signup</Header>
+                        </Segment>
                     <Form onSubmit={handleSubmit}>
                         {/* <Segment>Sign Up</Segment> */}
-                        <Segment stacked>
+                        <Segment stacked className='mainCard'>
                             <Form.Input
                             type ='text'
                             name='firstname'
@@ -67,11 +70,11 @@ function Register({ handleLogin}){
                                 type='password'
                                 placeholder='Password Confirmation'
                                 onChange={(e) => setPasswordConfirmation(e.target.value)} />
-                                <Button>Submit</Button>
+                                <Button color='olive'>Submit</Button>
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors.map(error => <p>{error}</p>)}</Message>: <> </>}
                     </Form>
-                    <Message>Already have an Account? <a href='/login'>Login</a></Message>
+                    <Message >Already have an Account? <a href='/login'>Login</a></Message>
                 </Grid.Column>
             </Grid>
         </div>

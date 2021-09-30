@@ -16,11 +16,11 @@ function Navbar( {handleLogout } ) {
     }
     return (
         <div>
-            <Segment>
-                <Header as='h1'>
+            {/* <Segment> */}
+                <Header style={{paddingTop: '3%'}} as='h1'>
                     Hidden Trails
                 </Header>
-            </Segment>
+            {/* </Segment> */}
             <Menu pointing secondary>
                 <Menu.Item as={ NavLink } exact to='/'>
                     Search for a Hike

@@ -53,11 +53,11 @@ function HikeList({user}){
                 return (<HikeListCard hl={hl} key={hl.id} user={user} itsCompleted={itsCompleted}
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div>Hmmm...looks like you don't have any hikes to explore. Why don't you search for a new one?</div>)
+            return (<div style={{height:'900px'}}>Hmmm...looks like you don't have any hikes to explore. Why don't you search for a new one?</div>)
         }
     }
     return(
-        <div>
+        <div >
             <Menu secondary>
                 <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
                 <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>

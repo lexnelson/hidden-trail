@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1b/Shivalik_Hills_-_winter_morning.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {
@@ -46,10 +49,13 @@ code {
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* background-color:rgb(241, 236, 229); */
+  
 }
 
 .hikeCardSinglePhoto{
   height: auto;
+  /* background-color:rgb(241, 236, 229); */
 }
 
 .imgCard{
@@ -60,9 +66,6 @@ code {
 .photoMap{
   max-width: 30%;
   height: auto;
-}
-
-.photoMapContainer{
   display:flex;
   flex-direction: column;
   align-content: center;
@@ -78,10 +81,20 @@ code {
 .ui.segment.picsSegment{
   display: flex;
   flex-direction: column;
- 
 }
 .nestedPhotosMap{
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-left: 5%;
 }
+
+.ui.segment.mainCard{
+  background-color: rgb(243, 245, 227);
+  /* background-color:rgb(227, 240, 235); */
+}
+
+.ui.segment.cardSegments{
+   background-color:rgb(255, 255, 255);
+}
+

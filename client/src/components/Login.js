@@ -35,12 +35,15 @@ function Login({ handleLogin}) {
     }
 
     return (
-        <div>
+        <div style={{height:'1000px'}}>
             <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
-                    <Header>Hidden Trails</Header>
+                <Segment className='mainCard'>
+                        <Header  as='h1'>Hidden Trails Login</Header>
+                        </Segment>
                     <Form onSubmit={handleSubmit}>
-                        <Segment stacked>
+                        <Segment stacked className='mainCard'>
+                            
                             <Form.Input
                                 type='text'
                                 name='username'
@@ -51,7 +54,7 @@ function Login({ handleLogin}) {
                                 type='password'
                                 placeholder='Password'
                                 onChange={(e) => setPassword(e.target.value)} />
-                                <Button>Submit</Button>
+                                <Button color='olive'>Submit</Button>
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors}</Message>: <> </>}
                     </Form>

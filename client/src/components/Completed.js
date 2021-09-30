@@ -51,12 +51,12 @@ function Completed({user}){
                 return (<CompletedCard hl={hl} key={hl.id} user={user} uncompleted={uncompleted}
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div> Sorry you have no Completed hikes</div>)
+            return (<div style={{height:'900px'}}> Sorry you have no Completed hikes</div>)
         }
     }
 
     return(
-        <div>
+        <div >
              <Menu secondary>
                 <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
                 <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>

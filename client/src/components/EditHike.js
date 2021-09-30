@@ -103,6 +103,7 @@ function EditHike({ }) {
         
         if (photos.length > 0) {
             return (
+                <Segment className='editPicsContainer'>
                 <div className='nestedEditPicsContainer'>
                     <Header as='h2' style={{ width: '750px'}}> Current photos for this hike</Header>
                 {photos.map((photo) => {
@@ -116,13 +117,15 @@ function EditHike({ }) {
                             <Button type='button' onClick={()=> deleteButton(photo.id)}>Delete photo</Button>
                         </Card>
                     </div>
+                    
                 )
             })}
-           </div> )
+           </div> 
+           </Segment>)
         }
         else {
             return(
-            <Header>Looks like your hike doesn't have any photos yet, upload a new one below!</Header>)
+            <Header as='h4'  style={{textAlign: 'center', marginLeft:'52%'}}>Looks like your hike doesn't have any photos yet, upload a new one below!</Header>)
         }
     }
 
@@ -149,10 +152,10 @@ function EditHike({ }) {
                 <Grid textAlign='center' verticalAlign='middle' style={{ height: '140vh' }}>
                     <Grid.Column style={{ maxWidth: '800px' }}>
                         <Form onSubmit={handleSubmit}>
-                            <Segment>
+                            <Segment className='mainCard'>
                                 <Header>Edit this hike</Header>
                             </Segment>
-                            <Segment>
+                            <Segment className='mainCard'>
                                 <Form.Group widths='equal'>
                                     <Form.Field>
                                         <label>{`Current Hike Name: ${hike.title}`}</label>
@@ -212,26 +215,26 @@ function EditHike({ }) {
 
                                 </Form.Field>
                                 <Form.Group>
-                                    <Button floated='left'>Submit</Button>
+                                    <Button color='olive' floated='left'>Submit</Button>
                                 </Form.Group>
                             </Segment>
                         </Form>
                         <br />
 
                         <Form onSubmit={secondSubmit}>
-                            <Segment>
+                            <Segment className='mainCard'>
                                 <Header>Add Photos to your hike</Header>
                             </Segment>
-                            <Segment>
+                            <Segment className='mainCard'>
                                 <Form.Group>
-                                    <Segment className='editPicsContainer'>
+                                    
                                     {photos ? <div>{phototCard()}</div> : <> </>}
-                                    </Segment>
+                                  
                                 </Form.Group>
                                 <h3>Add a New Picture</h3>
                                 <Form.Group widths='equal'>
                                     <Form.Field>
-                                        <label>Upload a file</label>
+                                        <label>Add a photo</label>
                                         <input type='text'
                                              value={imgSrc}
                                             placeholder='Image URL'
@@ -246,7 +249,7 @@ function EditHike({ }) {
 
                                 </Form.Group>
                                 <Form.Group>
-                                    <Button type ='submit'floated='left'>Submit</Button>
+                                    <Button color='olive' type ='submit'floated='left'>Submit</Button>
                                 </Form.Group>
                             </Segment>
                         </Form>

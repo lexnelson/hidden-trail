@@ -40,7 +40,7 @@ function MyHikes({ user }){
     }
 
     return(
-        <div>
+        <div style={{height:'900px'}}>
             <Menu secondary>
                 <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
                 <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>

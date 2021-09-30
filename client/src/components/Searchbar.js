@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Divider, Input, Segment, Button, Form, Dropdown } from 'semantic-ui-react'
+import { Divider, Input, Button, Dropdown, Grid } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 
 function Searchbar({ onSearch, onDropdown, onLength }) {
@@ -37,10 +37,10 @@ function Searchbar({ onSearch, onDropdown, onLength }) {
 
     return (
         <div>
-            <Segment textAlign='center'>
 
-                <Input icon='search'
-                    iconPosition='left'
+            <Grid textAlign='center' style={{ paddingTop: '3%', paddingBottom: '1%' }}>
+              
+                <Input
                     placeholder='Search by city...'
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -62,15 +62,13 @@ function Searchbar({ onSearch, onDropdown, onLength }) {
                     value={len}
                     onChange={((e, data) => setLen(data.value))} />
 
+            </Grid>
+            <Divider horizontal >Or </Divider>
 
-                <Divider horizontal >Or </Divider>
-
-                <Button
-                    color='olive'
-                    //  labelPosition='left'
-                    onClick={handleClick}
-                >Add a New Hike</Button>
-            </Segment>
+            <Button
+                color='olive'
+                onClick={handleClick}
+            >Add a New Hike</Button>
         </div>
     )
 }

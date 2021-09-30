@@ -2,6 +2,7 @@ import { Segment, Grid, Button, Popup, Header } from 'semantic-ui-react'
 import {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import TestModal from './TestModal'
+import Comments from './Comments'
 
 
 function MyHikeCard({user, handleDelete, hike}){
@@ -23,7 +24,7 @@ function MyHikeCard({user, handleDelete, hike}){
 
                         <img className='imgCard' src={hike.hike_photos[0].img_url} floated='left' />
                         <ul>
-                            <h4>{`Difficulty: ${hike.difficulty}`}</h4>
+                        {setDifficulty()}
                             <h4>{`Length: ${hike.length} miles`}</h4>
                             <h4>{hike.pet_friendly ? 'Pet friendly: yes' : 'Pet friendly: no'}</h4>
                         </ul>
@@ -35,10 +36,10 @@ function MyHikeCard({user, handleDelete, hike}){
             return (
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
-                        <img className='imgCard' floated='left' src='https://www.shihoriobata.com/wp-content/uploads/2020/08/how-to-draw-mountains-thumbnail.jpg' />
+                        <img className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
 
                         <ul>
-                            <h4>{`Difficulty: ${hike.difficulty}`}</h4>
+                        {setDifficulty()}
                             <h4>{`Length: ${hike.length} miles`}</h4>
                             <h4>{hike.pet_friendly ? 'Pet friendly: yes' : 'Pet friendly: no'}</h4>
                         </ul>
@@ -52,8 +53,6 @@ function MyHikeCard({user, handleDelete, hike}){
         if (hike.hike_photos.length > 0) {
             return (
                 <div className='nestedPhotosMap'>
-                    <Header >Photos of this hike</Header>
-
                     {hike.hike_photos.map((photo) => {
                         return (
                             <TestModal key={photo.id} photo={photo} />
@@ -63,24 +62,32 @@ function MyHikeCard({user, handleDelete, hike}){
             )
         }
         else {
-            return (<p> Looks like this hike doesn't have any photos</p>)
+            return (<p style={{textAlign: 'center'}}> Looks like this hike doesn't have any photos</p>)
         }
     }
 
-
+    function setDifficulty(){
+        if (hike.difficulty <= 2){
+            return(<h4>{`Difficulty: Easy`}</h4> )
+        } else if (hike.difficulty === 3){
+            return(<h4>{`Difficulty: Moderate`}</h4>)
+        }else {
+            return (<h4>{`Difficulty: Hard`}</h4>)
+        }
+    }
 
     return(
         <div>
             <Grid padded verticalAlign='middle' textAlign='center'>
                 <Grid.Column width={9}>
                     <div style={{paddingBottom: '100px'}}>
-                    <Segment.Group>
-                        <Segment textAlign='left'>
+                    <Segment textAlign='left' className='mainCard'>
+                        
                         <Popup content='delete this hike' trigger={
                                 <Button color='olive'onClick={()=>handleDelete(hike.id)} floated='right'> X</Button>} />
                         <h1>{hike.title}</h1>
                             <h3>{`${hike.city}, ${hike.state}`}</h3>
-                        </Segment>
+                       
                         <Segment.Group widths='equal'>
 
                             <Segment style={{ height: '20%' }}>
@@ -92,9 +99,9 @@ function MyHikeCard({user, handleDelete, hike}){
                         </Segment.Group>
 
                         {visible ?
-                            <Segment.Group>
+                        
                                 <div>
-                                    <Segment >
+                                    <Segment textAlign='center' className='cardSegments'>
                                         <h4>Directions:</h4>
                                         <p>{` ${hike.directions}`}</p>
                                         <h4>Extra Information: </h4>
@@ -103,14 +110,17 @@ function MyHikeCard({user, handleDelete, hike}){
                                     <Segment className='picsSegment'>
                                         {imageMapping()}
                                     </Segment>
+                                    <Segment className='cardSegments' textAlign ='left'>
+                                        <Comments hike={hike} user={user}/>
+                                    </Segment>
                                 </div>
-                            </Segment.Group>
+                            
                             : <> </>}
                         
-                        <Button onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
+                        <Button color='olive' style={{marginLeft: "38%"}} onClick={handleSeeMore}> {visible ? 'See Less' : 'See More'}</Button>
                         
-                        <Button onClick={goToHike}>Edit this hike</Button>
-                    </Segment.Group>
+                        <Button color='olive' onClick={goToHike}>Edit this hike</Button>
+                    </Segment>
                     </div>
                 </Grid.Column>
             </Grid>

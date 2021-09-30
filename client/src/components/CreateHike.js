@@ -90,13 +90,13 @@ function CreateHike({ user }) {
 
     return (
         <div>
-            <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh' }}>
+            <Grid textAlign='center' verticalAlign='middle' style={{ height: '90vh' }}>
                 <Grid.Column style={{ maxWidth: '800px' }}>
                     <Form onSubmit={handleSubmit}>
-                        <Segment>
+                        <Segment className='mainCard'>
                             <Header>Add a new hike!</Header>
                         </Segment>
-                        <Segment>
+                        <Segment className='mainCard'>
                             <Form.Group widths='equal'>
                                 <Form.Input
                                     required
@@ -150,7 +150,7 @@ function CreateHike({ user }) {
                             <br />
                             <Form.Group widths='equal'>
                                 <Form.Field>
-                                    <label>Upload a picture for this Hike!</label>
+                                    <label>Add a picture for this hike!</label>
                                     <input type='text'
                                         placeholder='Image URL'
                                         onChange={(e)=> setImgSrc(e.target.value)} />
@@ -162,7 +162,7 @@ function CreateHike({ user }) {
                                     onChange={(e) => setCaption(e.target.value)} />
                             </Form.Group>
                             <Form.Group>
-                                <Button floated='left'>Submit</Button>
+                                <Button style={{marginLeft: '2%'}} color='olive' floated='left'>Submit</Button>
                             </Form.Group>
                         </Segment>
                         {errors ? <Message style={{ color: 'black', backgroundColor: 'pink' }}>{errors.map(error => <p>{error}</p>)}</Message> : <> </>}
