@@ -21,7 +21,7 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
         })
             .then(r => r.json())
             .then(photos => setPhotos(photos))
-    }, [])
+    }, [hl.hike.id])
 
 
 
@@ -32,7 +32,7 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
 
-                        <img className='imgCard' src={photos[0].img_url} floated='left' />
+                        <img alt='firstHikePhoto' className='imgCard' src={photos[0].img_url} floated='left' />
                         <ul>
                         {setDifficulty()}
                             <h4>{`Length: ${hl.hike.length} miles`}</h4>
@@ -46,7 +46,7 @@ function HikeListCard({ hl, user, handleDelete, itsCompleted }) {
             return (
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
-                        <img className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
+                        <img alt='defaultImage' className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
 
                         <ul>
                         {setDifficulty()}

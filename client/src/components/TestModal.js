@@ -9,7 +9,7 @@ function TestModal({ photo }) {
             onOpen={() => setOpen(true)}
             open={open}
             trigger={
-                <img className='photoMap' src={photo.img_url} alt='photo' />
+                <img className='photoMap' src={photo.img_url} alt='hikePhoto' />
             }
         >
             <Modal.Header>{photo.caption}</Modal.Header>

@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 function Home({ user }) {
     const [search, setSearch] = useState('')
     const [allHikes, setAllHikes] = useState([])
-    const [difficulty, setDifficulty] = useState('')
-    const [length, setLength] = useState('')
+    const [difficulty, setDifficulty] = useState('all')
+    const [length, setLength] = useState('all')
 
     useEffect(() => {
         fetch('/hikes', {
@@ -66,6 +66,8 @@ function Home({ user }) {
                 return searchedResults().filter((hike) => {
                     return hike.difficulty > 3
                 })
+             default: 
+            return searchedResults()
         }
     }
 
@@ -89,6 +91,8 @@ function Home({ user }) {
                 return sortedDifficulty().filter((hike) => {
                     return hike.length >= 10
                 })
+                default: 
+                return sortedDifficulty()
         }
     }
 

@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import {useHistory} from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import Register from './Register'
 
 function Login({ handleLogin}) {
     
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors]=useState()
+    const [isClicked, setIsClicked]=useState(false)
+
      let history= useHistory()
   
     function handleSubmit(e) {
@@ -36,14 +39,15 @@ function Login({ handleLogin}) {
 
     return (
         <div style={{height:'1000px'}}>
+            {isClicked ? <Register setIsClicked={setIsClicked} handleLogin={handleLogin} isClicked={isClicked}/> :
             <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
                 <Segment className='mainCard'>
-                        <Header  as='h1'>Hidden Trails Login</Header>
+                        <Header  as='h1'>Hidden Trails </Header>
                         </Segment>
                     <Form onSubmit={handleSubmit}>
                         <Segment stacked className='mainCard'>
-                            
+                            <Header>Login</Header>
                             <Form.Input
                                 type='text'
                                 name='username'
@@ -58,10 +62,10 @@ function Login({ handleLogin}) {
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors}</Message>: <> </>}
                     </Form>
-                    <Message>Don't have an Account? <a href='/register'>Sign up</a></Message>
+                    <Message>Don't have an Account? <Button size='mini' color='olive' onClick={e=> setIsClicked(!isClicked)}>Sign up</Button></Message>
                 </Grid.Column>
-            </Grid>
-        </div>
+            </Grid>}
+        </div> 
     )
 }
 

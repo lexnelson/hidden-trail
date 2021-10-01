@@ -1,20 +1,32 @@
 import { useEffect, useState} from 'react'
 import HikeListCard from './HikeListCard'
 import { Menu } from 'semantic-ui-react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-function HikeList({user}){
+function HikeList(){
     const [hikeList, setHikeList]= useState([])
+    const [user, setUser]=useState()
 
     useEffect(()=> {
-        fetch(`/${user.id}/hike_lists/uncompleted`, { 
-        method: 'GET', 
-        headers: {
-            'Content-type': 'application/json'
-        }})
-        .then(r => r.json())
-        .then(hl => setHikeList(hl))
-    },[])
+        fetch('/me').then((r) => {
+          if (r.ok){
+            r.json().then((user)=> {
+              setUser(user)
+              fetch(`/${user.id}/hike_lists/uncompleted`, { 
+                method: 'GET', 
+                headers: {
+                    'Content-type': 'application/json'
+                }})
+                .then(r => r.json())
+                .then(hl => setHikeList(hl))
+            })
+          }
+        })
+      },[])
+
+    // useEffect(()=> {
+       
+    // },[])
 
     function handleDelete(hl){
         

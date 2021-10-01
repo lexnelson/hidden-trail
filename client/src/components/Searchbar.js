@@ -31,7 +31,7 @@ function Searchbar({ onSearch, onDropdown, onLength }) {
     function handleClick() {
         history.push('/create-a-hike')
     }
-
+    
 
 
 

@@ -23,7 +23,7 @@ function Comments({hike, user}) {
                 }
             })
            
-    }, [])
+    }, [hike.id])
    
    
     function handleSubmit(e) {

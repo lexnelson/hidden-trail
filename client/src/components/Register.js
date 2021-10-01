@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {useHistory} from 'react-router-dom'
 import { Button, Form, Grid, Message, Segment, Header } from 'semantic-ui-react'
 
-function Register({ handleLogin}){
+function Register({ handleLogin, setIsClicked, isClicked}){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -45,11 +45,12 @@ function Register({ handleLogin}){
            <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
                 <Segment className='mainCard'>
-                        <Header  as='h1'>Hidden Trails Signup</Header>
+                        <Header  as='h1'>Hidden Trails</Header>
                         </Segment>
                     <Form onSubmit={handleSubmit}>
-                        {/* <Segment>Sign Up</Segment> */}
+                        
                         <Segment stacked className='mainCard'>
+                        <Header>Sign Up</Header>
                             <Form.Input
                             type ='text'
                             name='firstname'
@@ -74,7 +75,7 @@ function Register({ handleLogin}){
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors.map(error => <p>{error}</p>)}</Message>: <> </>}
                     </Form>
-                    <Message >Already have an Account? <a href='/login'>Login</a></Message>
+                    <Message >Already have an Account? <Button size='mini' color='olive' onClick={e=> setIsClicked(!isClicked)}>Login</Button></Message>
                 </Grid.Column>
             </Grid>
         </div>

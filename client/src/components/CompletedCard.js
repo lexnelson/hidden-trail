@@ -22,7 +22,7 @@ function CompletedCard({ hl, user, handleDelete, uncompleted }) {
         })
             .then(r => r.json())
             .then(photos => setPhotos(photos))
-    }, [])
+    }, [hl.hike.id])
 
 
     function renderImage() {
@@ -31,10 +31,10 @@ function CompletedCard({ hl, user, handleDelete, uncompleted }) {
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
 
-                        <img className='imgCard' src={photos[0].img_url} floated='left' />
+                        <img alt='firstHikePhoto' className='imgCard' src={photos[0].img_url} floated='left' />
                         <ul>
                         {setDifficulty()}
-                            {/* <h4>{`Difficulty: ${hl.hike.difficulty}`}</h4> */}
+                           
                             <h4>{`Length: ${hl.hike.length} miles`}</h4>
                             <h4>{hl.hike.pet_friendly ? 'Pet friendly: yes' : 'Pet friendly: no'}</h4>
                         </ul>
@@ -46,10 +46,10 @@ function CompletedCard({ hl, user, handleDelete, uncompleted }) {
             return (
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
-                        <img className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
+                        <img alt='defaultHikePhoto' className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
 
                         <ul>
-                            <h4>{setDifficulty()}</h4>
+                            {setDifficulty()}
                             <h4>{`Length: ${hl.hike.length} miles`}</h4>
                             <h4>{hl.hike.pet_friendly ? 'Pet friendly: yes' : 'Pet friendly: no'}</h4>
                         </ul>

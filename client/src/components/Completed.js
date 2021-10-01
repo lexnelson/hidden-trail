@@ -1,21 +1,38 @@
 import { Menu } from 'semantic-ui-react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useEffect, useState} from 'react'
 import CompletedCard from './CompletedCard'
 
-function Completed({user}){
+function Completed(){
     const [hikeList, setHikeList]= useState([])
-    
+    const [user, setUser]=useState()
 
     useEffect(()=> {
-        fetch(`/${user.id}/hike_lists/completed`, { 
-        method: 'GET', 
-        headers: {
-            'Content-type': 'application/json'
-        }})
-        .then(r => r.json())
-        .then(hl => setHikeList(hl))
-    },[])
+        fetch('/me').then((r) => {
+          if (r.ok){
+            r.json().then((user)=> {
+              setUser(user)
+              fetch(`/${user.id}/hike_lists/completed`, { 
+                method: 'GET', 
+                headers: {
+                    'Content-type': 'application/json'
+                }})
+                .then(r => r.json())
+                .then(hl => setHikeList(hl))
+            })
+          }
+        })
+      },[])
+
+    // useEffect(()=> {
+    //     fetch(`/${user.id}/hike_lists/completed`, { 
+    //     method: 'GET', 
+    //     headers: {
+    //         'Content-type': 'application/json'
+    //     }})
+    //     .then(r => r.json())
+    //     .then(hl => setHikeList(hl))
+    // },[user.id])
 
     function handleDelete(hl){
         

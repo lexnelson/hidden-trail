@@ -1,5 +1,5 @@
-import { Segment, Grid, Button, Popup, Header } from 'semantic-ui-react'
-import {useState, useEffect} from 'react'
+import { Segment, Grid, Button, Popup } from 'semantic-ui-react'
+import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import TestModal from './TestModal'
 import Comments from './Comments'
@@ -22,7 +22,7 @@ function MyHikeCard({user, handleDelete, hike}){
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
 
-                        <img className='imgCard' src={hike.hike_photos[0].img_url} floated='left' />
+                        <img alt='firstImage' className='imgCard' src={hike.hike_photos[0].img_url} floated='left' />
                         <ul>
                         {setDifficulty()}
                             <h4>{`Length: ${hike.length} miles`}</h4>
@@ -36,7 +36,7 @@ function MyHikeCard({user, handleDelete, hike}){
             return (
                 <div className='hikeCardSinglePhoto'>
                     <Segment vertical textAlign='center' className='nestedHikeCard'>
-                        <img className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
+                        <img alt='defaultImage' className='imgCard' floated='left' src='https://cdn.dribbble.com/users/97731/screenshots/14180216/mountain_4x.jpg' />
 
                         <ul>
                         {setDifficulty()}

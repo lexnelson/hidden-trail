@@ -1,9 +1,9 @@
 import { useHistory, useParams } from 'react-router-dom'
-import { Button, Form, Grid, Segment, Header, Dropdown, Message, Card, Image } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment, Header, Dropdown, Card, Image } from 'semantic-ui-react'
 import { useEffect, useState } from 'react'
 
 
-function EditHike({ }) {
+function EditHike() {
     const { id } = useParams()
     const [hike, setHike] = useState()
     const [petFriendly, setPetFriendly] = useState('')
@@ -53,7 +53,7 @@ function EditHike({ }) {
             .then(hike => {
                 setStates(hike)
             })
-    }, [])
+    }, [id])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -103,12 +103,12 @@ function EditHike({ }) {
         
         if (photos.length > 0) {
             return (
-                <Segment className='editPicsContainer'>
+                <Segment className='editPicsContainer' style={{width: '735px'}}>
                 <div className='nestedEditPicsContainer'>
-                    <Header as='h2' style={{ width: '750px'}}> Current photos for this hike</Header>
+                    <Header as='h2' style={{ width: '735px'}}> Current photos for this hike</Header>
                 {photos.map((photo) => {
                 return (
-                    <div className='editPics'>
+                    <div className='editPics' key={photo.id}>
                         <Card key={photo.id}>
                             <Image src={photo.img_url} size='medium' />
                             <Card.Content>

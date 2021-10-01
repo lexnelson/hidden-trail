@@ -1,4 +1,4 @@
-import { Menu, Segment, Header, Button } from 'semantic-ui-react'
+import { Menu, Header, Button } from 'semantic-ui-react'
 import { NavLink, useHistory } from 'react-router-dom'
 
 function Navbar( {handleLogout } ) {
@@ -16,11 +16,11 @@ function Navbar( {handleLogout } ) {
     }
     return (
         <div>
-            {/* <Segment> */}
+           
                 <Header style={{paddingTop: '3%'}} as='h1'>
                     Hidden Trails
                 </Header>
-            {/* </Segment> */}
+           
             <Menu pointing secondary>
                 <Menu.Item as={ NavLink } exact to='/'>
                     Search for a Hike
