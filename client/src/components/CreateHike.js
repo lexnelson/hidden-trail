@@ -1,8 +1,8 @@
 import { Button, Form, Grid, Segment, Header, Dropdown, Message, Image } from 'semantic-ui-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function CreateHike({ user }) {
+function CreateHike() {
     const [petFriendly, setPetFriendly] = useState(false)
     const [title, setTitle] = useState('')
     const [city, setCity] = useState('')
@@ -14,9 +14,19 @@ function CreateHike({ user }) {
     const [errors, setErrors] = useState()
     const [imgSrc, setImgSrc] = useState()
     const [caption, setCaption] = useState()
-
+    const [user, setUser]=useState()
 
     let history = useHistory()
+
+    useEffect(()=> {
+        fetch('/me').then((r) => {
+          if (r.ok){
+            r.json().then((user)=> {
+              setUser(user)
+            })
+          } 
+        })
+      },[])
 
     const options = [
         { key: 'y', text: 'Yes', value: true },

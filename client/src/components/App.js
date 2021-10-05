@@ -13,6 +13,7 @@ import 'semantic-ui-css/semantic.min.css'
 import Completed from './Completed'
 import CreateHike from './CreateHike'
 import EditHike from './EditHike'
+import Tracker from './Tracker'
 
 
 
@@ -33,7 +34,7 @@ function App() {
           
         })
       } else {
-        history.push('/login')
+        history.push('/login-or-register')
       }
     })
   },[history])
@@ -57,7 +58,7 @@ function App() {
         <Route exact path = '/'>
           { loggedIn? <Home user={user}/> : <> </>}
         </Route>
-        <Route path = '/login'>
+        <Route path = '/login-or-register'>
           <Login handleLogin={handleLogin}/>
         </Route>
         <Route exact path ='/create-a-hike'>
@@ -75,9 +76,13 @@ function App() {
         <Route exact path ='/myhikes/created'>
           <MyHikes user={user}/>
         </Route>
+        <Route exact path ='/tracker'>
+          <Tracker />
+        </Route>
         <Route path ='/myhikes'>
           <HikeList user={user}/>
         </Route>
+       
         {/* <Route path='/auth'>
 
         </Route> */}

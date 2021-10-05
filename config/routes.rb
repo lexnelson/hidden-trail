@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :logs, only: [:create]
+  get '/:id/logs', to: 'logs#diary'
+
   resources :comments, only: [:destroy]
   get '/:id/comments', to: 'comments#hike_comments'
   post '/add_a_comment', to: 'comments#create_comment_for_hike'

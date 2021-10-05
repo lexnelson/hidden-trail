@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react'
 import HikeListCard from './HikeListCard'
-import { Menu } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Header } from 'semantic-ui-react'
+import SubMenu from './SubMenu'
 
 function HikeList(){
     const [hikeList, setHikeList]= useState([])
@@ -24,9 +24,6 @@ function HikeList(){
         })
       },[])
 
-    // useEffect(()=> {
-       
-    // },[])
 
     function handleDelete(hl){
         
@@ -65,16 +62,12 @@ function HikeList(){
                 return (<HikeListCard hl={hl} key={hl.id} user={user} itsCompleted={itsCompleted}
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div style={{height:'900px'}}>Hmmm...looks like you don't have any hikes to explore. Why don't you search for a new one?</div>)
+            return (<Header color='grey' as='h4' >Hmmm... it looks like you don't have any hikes to explore. Why don't you <a href='/'>search</a> for a new one?</Header>)
         }
     }
     return(
         <div >
-            <Menu secondary>
-                <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
-                <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>
-                <Menu.Item as={ NavLink } exact to='/myhikes/created'>Hikes I created</Menu.Item>
-            </Menu>
+            <SubMenu/>
             
             {mapping()}
         </div>

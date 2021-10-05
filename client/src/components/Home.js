@@ -1,12 +1,14 @@
 import Searchbar from './Searchbar'
 import HikeCard from './HikeCard'
 import { useEffect, useState } from 'react'
+import { Header, Button } from 'semantic-ui-react'
 
 function Home({ user }) {
     const [search, setSearch] = useState('')
     const [allHikes, setAllHikes] = useState([])
     const [difficulty, setDifficulty] = useState('all')
     const [length, setLength] = useState('all')
+    const [toggleView, setView]=useState(false)
 
     useEffect(() => {
         fetch('/hikes', {
@@ -33,11 +35,15 @@ function Home({ user }) {
 
     function mapping() {
         if (allHikes.length > 0) {
+            if (sortedSearchedLength().length > 0){
             return (sortedSearchedLength().map(hike => {
                 return (<HikeCard hike={hike} key={hike.id} user={user} />)
             }))
         } else {
-            return (<h4>It doesn't look like any hikes match your search</h4>)
+            return (<Header as='h3' >It doesn't look like any hikes match your search</Header>)
+        }}
+        else {
+            return (<> </>)
         }
     }
 
@@ -99,8 +105,8 @@ function Home({ user }) {
 
     return (
         <div>
-            <Searchbar onSearch={onSearch} onDropdown={onDropdown} onLength={onLength} />
-            <h2>Find your next happy place... </h2>
+            <Searchbar onSearch={onSearch} onDropdown={onDropdown} onLength={onLength} search={search} length={length} difficulty={difficulty} />
+            <Header as='h2' color='grey'>Find your next happy place... </Header>
             {mapping()}
         </div>
     )

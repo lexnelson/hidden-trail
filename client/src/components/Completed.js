@@ -1,7 +1,7 @@
-import { Menu } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Header } from 'semantic-ui-react'
 import { useEffect, useState} from 'react'
 import CompletedCard from './CompletedCard'
+import SubMenu from './SubMenu'
 
 function Completed(){
     const [hikeList, setHikeList]= useState([])
@@ -68,17 +68,13 @@ function Completed(){
                 return (<CompletedCard hl={hl} key={hl.id} user={user} uncompleted={uncompleted}
                       handleDelete={handleDelete}/>)
         }))} else {
-            return (<div style={{height:'900px'}}> Sorry you have no Completed hikes</div>)
+            return (<Header as='h4' color='grey'> It doesn't look like you've completed any hikes yet</Header>)
         }
     }
 
     return(
         <div >
-             <Menu secondary>
-                <Menu.Item as={ NavLink } exact to='/myhikes'>Trails I want to hike</Menu.Item>
-                <Menu.Item  as={ NavLink } exact to='/myhikes/completed'>Hikes I've completed</Menu.Item>
-                <Menu.Item as={ NavLink } exact to='/myhikes/created'>Hikes I created</Menu.Item>
-            </Menu>
+             <SubMenu/>
             {mapping()}
         </div>
     )

@@ -43,11 +43,11 @@ function Login({ handleLogin}) {
             <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
                 <Segment className='mainCard'>
-                        <Header  as='h1'>Hidden Trails </Header>
+                        <Header color='grey' as='h1'>Hidden Trails </Header>
                         </Segment>
                     <Form onSubmit={handleSubmit}>
                         <Segment stacked className='mainCard'>
-                            <Header>Login</Header>
+                            <Header color='grey'>Login</Header>
                             <Form.Input
                                 type='text'
                                 name='username'
@@ -62,7 +62,11 @@ function Login({ handleLogin}) {
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors}</Message>: <> </>}
                     </Form>
-                    <Message>Don't have an Account? <Button size='mini' color='olive' onClick={e=> setIsClicked(!isClicked)}>Sign up</Button></Message>
+                    <Segment className='mainCard'>
+                        <Header as='h4' > Don't have an account?   
+                        <Button size='tiny' color='olive' style={{marginLeft: '20px'}} onClick={e=> setIsClicked(!isClicked)}>Sign up here</Button>
+                        </Header>
+                        </Segment>
                 </Grid.Column>
             </Grid>}
         </div> 

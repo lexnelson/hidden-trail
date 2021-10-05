@@ -45,12 +45,12 @@ function Register({ handleLogin, setIsClicked, isClicked}){
            <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
                 <Grid.Column style={{maxWidth: '500px'}}>
                 <Segment className='mainCard'>
-                        <Header  as='h1'>Hidden Trails</Header>
+                        <Header color='grey' as='h1'>Hidden Trails</Header>
                         </Segment>
                     <Form onSubmit={handleSubmit}>
                         
                         <Segment stacked className='mainCard'>
-                        <Header>Sign Up</Header>
+                        <Header color='grey'>Sign Up</Header>
                             <Form.Input
                             type ='text'
                             name='firstname'
@@ -75,7 +75,12 @@ function Register({ handleLogin, setIsClicked, isClicked}){
                         </Segment>
                         {errors? <Message style={{color: 'black', backgroundColor: 'pink'}}>{errors.map(error => <p>{error}</p>)}</Message>: <> </>}
                     </Form>
-                    <Message >Already have an Account? <Button size='mini' color='olive' onClick={e=> setIsClicked(!isClicked)}>Login</Button></Message>
+                    <Segment className='mainCard'>
+                        <Header as='h4' > Already have an account?   
+                        <Button size='tiny' color='olive' style={{marginLeft: '20px'}} onClick={e=> setIsClicked(!isClicked)}>Login here</Button>
+                        </Header>
+                        </Segment>
+                    {/* <Message >  <Button size='mini' color='olive' onClick={e=> setIsClicked(!isClicked)}>Login</Button></Message> */}
                 </Grid.Column>
             </Grid>
         </div>

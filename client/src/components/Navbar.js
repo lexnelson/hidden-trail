@@ -11,13 +11,13 @@ function Navbar( {handleLogout } ) {
             method: "DELETE"
         }).then(()=> {
             handleLogout();
-            history.push('/login')
+            history.push('/login-or-register')
         })
     }
     return (
         <div>
            
-                <Header style={{paddingTop: '3%'}} as='h1'>
+                <Header  color= 'grey' style={{paddingTop: '3%'}} as='h1'>
                     Hidden Trails
                 </Header>
            
@@ -27,6 +27,9 @@ function Navbar( {handleLogout } ) {
                 </Menu.Item>
                 <Menu.Item as={ NavLink } to='/myhikes'>
                     My Hikes
+                </Menu.Item>
+                <Menu.Item as={ NavLink } to='/tracker'>
+                    Hike Tracker
                 </Menu.Item>
                 
                 <Menu.Item position='right' as={ Button } onClick={handleClick}>
